@@ -89,33 +89,3 @@ def encrypt_text(unencrypted_text, cipher):
     except Exception:
         logging.error('error encrypting text: %s', traceback.format_exc())
     raise RuntimeError from None
-
-
-if __name__ == "__main__":
-    text = "some text"
-    logging.info("original text: %s", text)
-    public_key = open(
-        os.path.join(
-            os.getcwd(),
-            "tests/data/public.pem",
-        ),
-        "rb",
-    ).read()
-    imported_public_key = load_key(file_contents=public_key)
-    public_key_cipher = create_cipher(imported_public_key)
-    encrypted_message = encrypt_text(
-        unencrypted_text=text,
-        cipher=public_key_cipher,
-    )
-    logging.info("RSA-encrypted and base85-encoded text: %s", encrypted_message)
-
-    pivate_key = open(
-        os.path.join(
-            os.getcwd(),
-            "tests/data/private.pem"
-        ), "rb",
-    ).read()
-    imported_private_key = load_key(file_contents=pivate_key)
-    private_key_cipher = create_cipher(imported_private_key)
-    decoded_text = decrypt_text(encrypted_message, cipher=private_key_cipher)
-    logging.info("decoded text: %s", decoded_text)
