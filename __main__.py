@@ -3,7 +3,8 @@ import os
 
 import serializers as ser
 
-if __name__ == "__main__":
+
+def main():
     text = "some text"
     logging.info("original text: %s", text)
     public_key = open(
@@ -34,3 +35,7 @@ if __name__ == "__main__":
         cipher=private_key_cipher,
     )
     logging.info("decoded text: %s", decoded_text)
+
+
+if __name__ == "__main__":
+    main()
