@@ -10,7 +10,7 @@ def main():
     public_key = open(
         os.path.join(
             os.getcwd(),
-            "tests/data/public.pem",
+            "../tests/data/public.pem",
         ),
         "rb",
     ).read()
@@ -25,7 +25,7 @@ def main():
     pivate_key = open(
         os.path.join(
             os.getcwd(),
-            "tests/data/private.pem"
+            "../tests/data/private.pem"
         ), "rb",
     ).read()
     imported_private_key = ser.load_key(file_contents=pivate_key)
