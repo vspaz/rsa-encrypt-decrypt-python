@@ -62,9 +62,11 @@ def encrypt_text(unencrypted_text, cipher):
 
 
 class Encoder:
-    def __init__(self, private_key=None, public_key=None):
-        self._private_key = private_key
-        self._public_key = public_key
+    def __init__(self, private_key: str = None, public_key: str = None):
+        if private_key:
+            self._private_key = self.load_key(key=private_key.encode())
+        if public_key:
+            self._public_key = self.load_key(key=public_key.encode())
 
     @staticmethod
     def to_bytes(serializable, encoding='UTF-8'):
@@ -83,8 +85,8 @@ class Encoder:
         return base64.a85decode(deserializable)
 
     @staticmethod
-    def load_key(file_contents):
-        return RSA.importKey(file_contents)
+    def load_key(key):
+        return RSA.importKey(key)
 
     @staticmethod
     def _create_cipher(key):

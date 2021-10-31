@@ -59,16 +59,15 @@ def test_decrypt_ok():
 
 def test_encrypt_decrypt_ok():
     message_to_be_encrypted = "some text goes here"
-    imported_public_key = serializers.load_key(file_contents=serializers.to_bytes(_PUBLIC_TEST_KEY))
-    public_key_cipher = serializers.create_cipher(key=imported_public_key)
-    encoded_text = serializers.encrypt_text(unencrypted_text=message_to_be_encrypted,
-                                            cipher=public_key_cipher)
+    encoder = serializers.Encoder(public_key=_PUBLIC_TEST_KEY)
+    encrypted_message = encoder.encrypt_with_public_key(
+        unencrypted_text=message_to_be_encrypted)
+    base85_encoded_message = encoder.to_base_85(serializable=encrypted_message)
 
-    imported_private_key = serializers.load_key(
-        file_contents=serializers.to_bytes(_PRIVATE_TEST_KEY))
-    private_key_cipher = serializers.create_cipher(key=imported_private_key)
-    decoded_text = serializers.decrypt_text(
-        encrypted_text=encoded_text,
-        cipher=private_key_cipher,
-    )
-    assert decoded_text == "some text goes here"
+    decoder = serializers.Encoder(private_key=_PRIVATE_TEST_KEY)
+    base85_decoded_message = decoder.from_base_85(
+        deserializable=base85_encoded_message)
+    decoded_text = decoder.decrypt_with_private_key(
+        encrypted_text=base85_decoded_message)
+
+    assert decoded_text.decode() == message_to_be_encrypted
