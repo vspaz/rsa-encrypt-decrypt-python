@@ -1,7 +1,7 @@
 import logging
 import os
 
-import serializers as ser
+from cryptolib import serializers as ser
 
 
 def main():
