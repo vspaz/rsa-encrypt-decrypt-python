@@ -1,4 +1,5 @@
 import base64
+from typing import Union
 
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.PublicKey import RSA
@@ -12,19 +13,19 @@ class Encoder:
             self._public_key = self.load_key(key=public_key.encode())
 
     @staticmethod
-    def to_bytes(serializable, encoding='UTF-8'):
+    def to_bytes(serializable: str, encoding='UTF-8') -> bytes:
         return serializable.encode(encoding=encoding)
 
     @staticmethod
-    def from_bytes(deserializable, encoding='UTF-8'):
+    def from_bytes(deserializable: bytes, encoding='UTF-8') -> str:
         return deserializable.decode(encoding=encoding)
 
     @staticmethod
-    def to_base_85(serializable):
+    def to_base_85(serializable) -> bytes:
         return base64.a85encode(serializable)
 
     @staticmethod
-    def from_base_85(deserializable):
+    def from_base_85(deserializable) -> bytes:
         return base64.a85decode(deserializable)
 
     @staticmethod
@@ -35,10 +36,10 @@ class Encoder:
     def _create_cipher(key):
         return PKCS1_OAEP.new(key)
 
-    def encrypt_with_public_key(self, unencrypted_text):
+    def encrypt_with_public_key(self, unencrypted_text: str) -> bytes:
         cipher = self._create_cipher(key=self._public_key)
         return cipher.encrypt(message=unencrypted_text.encode())
 
-    def decrypt_with_private_key(self, encrypted_text):
+    def decrypt_with_private_key(self, encrypted_text: bytes) -> bytes:
         cipher = self._create_cipher(key=self._private_key)
         return cipher.decrypt(ct=encrypted_text)
