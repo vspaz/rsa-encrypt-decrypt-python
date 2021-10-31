@@ -47,14 +47,13 @@ def test_decrypt_ok():
     t97l>E_O9[X[#_/t!U#Df6)>EDYA@/0sgBGA_a83'X/g(^96<M4UY)HG8faHOG9f,m*:n(/)j[q
     UqTB:=mA=gTBIZksN]h#:T;cC&*_QI4>e(&s;8@]VUrIgd\*&ZoEJb0!6TS&2[7\[sY_?g_/i
     9#VPKdlA-rE.sCMc;bluSZsZkEknU`7i0D_bIKA'?g3B)K""")
-    imported_private_key = serializers.load_key(
-        file_contents=serializers.to_bytes(_PRIVATE_TEST_KEY))
-    private_key_cipher = serializers.create_cipher(key=imported_private_key)
-    decoded_text = serializers.decrypt_text(
-        encrypted_text=encrypted_message,
-        cipher=private_key_cipher,
-    )
-    assert decoded_text == "some text data"
+
+    decoder = serializers.Encoder(private_key=_PRIVATE_TEST_KEY)
+    base85_decoded_message = decoder.from_base_85(
+        deserializable=encrypted_message)
+    decoded_text = decoder.decrypt_with_private_key(
+        encrypted_text=base85_decoded_message)
+    assert decoded_text.decode() == "some text data"
 
 
 def test_encrypt_decrypt_ok():
