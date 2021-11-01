@@ -13,8 +13,9 @@ openssl rsa -in private.pem -out public.pem -pubout -outform PEM
 ### Install cryptolib
 
 ```bash
-git clone https://github.com/vspaz/rsa-encrypt-decrypt-golang.git
-cd rsa-encrypt-decrypt-golang
+git clone https://github.com/vspaz/rsa-encrypt-decrypt-python.git
+cd rsa-encrypt-decrypt-python
 
 python3 setup.py install
 ```
+
