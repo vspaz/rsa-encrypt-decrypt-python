@@ -2,7 +2,7 @@ from cryptolib import serializers
 
 
 def encrypt_message(message_to_encrypt: str) -> bytes:
-    _PUBLIC_TEST_KEY = """-----BEGIN PUBLIC KEY-----
+    public_key = """-----BEGIN PUBLIC KEY-----
     MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxGDcSAjiHKP9v2ITR+Bj
     Qmt9Tx2zW08ZyrjOxPew+Gxl2m5zJyoP8sicZV81BeMNFkMg6q7sMtRXHhX1nFiT
     ql5HBIqhZohYlN3LIXK2bdPWpDttrOFXfsSbZ4Wqy3XhXBhiPNn3kkkRv1N5L/IY
@@ -13,13 +13,13 @@ def encrypt_message(message_to_encrypt: str) -> bytes:
     -----END PUBLIC KEY-----
     """
 
-    encoder = serializers.Encoder(public_key=_PUBLIC_TEST_KEY)
+    encoder = serializers.Encoder(public_key=public_key)
     encrypted_message = encoder.encrypt(unencrypted_text=message_to_encrypt)
     return encoder.to_base_85(serializable=encrypted_message)
 
 
-def decrypt_message(message_to_decrypt: bytes):
-    _PRIVATE_TEST_KEY = """-----BEGIN RSA PRIVATE KEY-----
+def decrypt_message(message_to_decrypt: bytes) -> str:
+    private_key = """-----BEGIN RSA PRIVATE KEY-----
     MIIEowIBAAKCAQEAxGDcSAjiHKP9v2ITR+BjQmt9Tx2zW08ZyrjOxPew+Gxl2m5z
     JyoP8sicZV81BeMNFkMg6q7sMtRXHhX1nFiTql5HBIqhZohYlN3LIXK2bdPWpDtt
     rOFXfsSbZ4Wqy3XhXBhiPNn3kkkRv1N5L/IYcdrxwqaqvTlJzOeQnDsd3+AmkYst
@@ -47,7 +47,7 @@ def decrypt_message(message_to_decrypt: bytes):
     8UmZ7fFkjNFJH0Rh5y+tmoFyou3FsWzL2lpd1mIryAH2LR3PGE/t
     -----END RSA PRIVATE KEY-----"""
 
-    decoder = serializers.Decoder(private_key=_PRIVATE_TEST_KEY)
+    decoder = serializers.Decoder(private_key=private_key)
     base85_decoded_message = decoder.from_base_85(deserializable=message_to_decrypt)
     return decoder.decrypt(encrypted_text=base85_decoded_message).decode()
 
