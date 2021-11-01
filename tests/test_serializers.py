@@ -50,7 +50,7 @@ def test_decrypt_ok():
 
     decoder = serializers.Decoder(private_key=_PRIVATE_TEST_KEY)
     base85_decoded_message = decoder.from_base_85(deserializable=encrypted_message)
-    decoded_text = decoder.decrypt_with_private_key(encrypted_text=base85_decoded_message)
+    decoded_text = decoder.decrypt(encrypted_text=base85_decoded_message)
 
     assert decoded_text.decode() == "some text data"
 
@@ -58,11 +58,11 @@ def test_decrypt_ok():
 def test_encrypt_decrypt_ok():
     message_to_be_encrypted = "some text goes here"
     encoder = serializers.Encoder(public_key=_PUBLIC_TEST_KEY)
-    encrypted_message = encoder.encrypt_with_public_key(unencrypted_text=message_to_be_encrypted)
+    encrypted_message = encoder.encrypt(unencrypted_text=message_to_be_encrypted)
     base85_encoded_message = encoder.to_base_85(serializable=encrypted_message)
 
     decoder = serializers.Decoder(private_key=_PRIVATE_TEST_KEY)
     base85_decoded_message = decoder.from_base_85(deserializable=base85_encoded_message)
-    decoded_text = decoder.decrypt_with_private_key(encrypted_text=base85_decoded_message)
+    decoded_text = decoder.decrypt(encrypted_text=base85_decoded_message)
 
     assert decoded_text.decode() == message_to_be_encrypted
