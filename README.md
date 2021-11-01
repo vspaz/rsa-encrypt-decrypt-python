@@ -84,3 +84,5 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+**NOTE**: please refer to [rsa-encrypt-decrypt-golang][https://github.com/vspaz/rsa-encrypt-decrypt-golang] if you need the Golang lib.
