@@ -1,5 +1,6 @@
 .idea/
 
 build/
+cryptolib/__pycache__/
 cryptolib.egg-info/
 dist/
