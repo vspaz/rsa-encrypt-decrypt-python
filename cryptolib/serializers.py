@@ -41,4 +41,4 @@ class Encoder:
 
     def decrypt_with_private_key(self, encrypted_text: bytes) -> bytes:
         cipher = self._create_cipher(key=self._private_key)
-        return cipher.decrypt(ct=encrypted_text)
+        return cipher.decrypt(ciphertext=encrypted_text)
