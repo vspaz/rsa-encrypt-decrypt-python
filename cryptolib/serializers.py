@@ -6,6 +6,7 @@ from Crypto.PublicKey import RSA
 
 class Encoder:
     def __init__(self, private_key: str = None, public_key: str = None):
+        assert private_key or public_key, "private_key or/and public_key need to be given"
         if private_key:
             self._private_key = self.load_key(key=private_key.encode())
         if public_key:
