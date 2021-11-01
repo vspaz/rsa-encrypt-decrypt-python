@@ -48,7 +48,7 @@ def test_decrypt_ok():
     UqTB:=mA=gTBIZksN]h#:T;cC&*_QI4>e(&s;8@]VUrIgd\*&ZoEJb0!6TS&2[7\[sY_?g_/i
     9#VPKdlA-rE.sCMc;bluSZsZkEknU`7i0D_bIKA'?g3B)K""")
 
-    decoder = serializers.Encoder(private_key=_PRIVATE_TEST_KEY)
+    decoder = serializers.Decoder(private_key=_PRIVATE_TEST_KEY)
     base85_decoded_message = decoder.from_base_85(deserializable=encrypted_message)
     decoded_text = decoder.decrypt_with_private_key(encrypted_text=base85_decoded_message)
 
@@ -61,7 +61,7 @@ def test_encrypt_decrypt_ok():
     encrypted_message = encoder.encrypt_with_public_key(unencrypted_text=message_to_be_encrypted)
     base85_encoded_message = encoder.to_base_85(serializable=encrypted_message)
 
-    decoder = serializers.Encoder(private_key=_PRIVATE_TEST_KEY)
+    decoder = serializers.Decoder(private_key=_PRIVATE_TEST_KEY)
     base85_decoded_message = decoder.from_base_85(deserializable=base85_encoded_message)
     decoded_text = decoder.decrypt_with_private_key(encrypted_text=base85_decoded_message)
 
