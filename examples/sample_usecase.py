@@ -53,11 +53,11 @@ def decrypt_message(message_to_decrypt: bytes) -> str:
 
 
 def main():
-    initial_message = "some text goes here"
+    initial_message = 'some text goes here'
     encrypted_message = encrypt_message(message_to_encrypt=initial_message)
     decrypted_message = decrypt_message(message_to_decrypt=encrypted_message)
     assert decrypted_message == initial_message
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
