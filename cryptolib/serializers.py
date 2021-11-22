@@ -35,6 +35,10 @@ class Encoder(CryptoBase):
     def to_base_85(serializable: Union[str, bytes]) -> bytes:
         return base64.a85encode(serializable)
 
+    @staticmethod
+    def to_base_64(serializable: Union[str, bytes]) -> bytes:
+        return base64.b64encode(serializable)
+
 
 class Decoder(CryptoBase):
     def __init__(self, private_key: str):

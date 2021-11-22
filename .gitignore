@@ -4,3 +4,4 @@ build/
 cryptolib/__pycache__/
 cryptolib.egg-info/
 dist/
+tests/__pycache__/
