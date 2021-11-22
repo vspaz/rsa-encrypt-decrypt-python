@@ -40,7 +40,19 @@ bQIDAQAB
 """
 
 
-def test_decrypt_ok():
+def test_rsa_encrypt_decrypt_ok():
+    message_to_be_encrypted = 'some text goes here'
+
+    encoder = serializers.Encoder(public_key=_PUBLIC_TEST_KEY)
+    encrypted_message = encoder.encrypt(unencrypted_text=message_to_be_encrypted)
+
+    decoder = serializers.Decoder(private_key=_PRIVATE_TEST_KEY)
+    decoded_text = decoder.decrypt(encrypted_text=encrypted_message)
+
+    assert decoded_text.decode() == message_to_be_encrypted
+
+
+def test_rsa_decrypt_ok():
     # message encrypted with https://github.com/vspaz/rsa-encrypt-decrypt-golang
     encrypted_message = (""">pZ5hVNLt"(c>=Oe-C:AUW*&h><-<J;Cq3g:"Fq$oO*G=nb_6+oM
     U2D6G^E8g==scSMLC</^2B"bK[jN\\aW2Sf<Xu75:F\#PPZ/P$huA;lPOH8HO(.p'dE#:d)'.+.
@@ -55,7 +67,7 @@ def test_decrypt_ok():
     assert decoded_text.decode() == 'some text data'
 
 
-def test_encrypt_decrypt_ok():
+def test_encrypt_decrypt_with_base85_ok():
     message_to_be_encrypted = 'some text goes here'
     encoder = serializers.Encoder(public_key=_PUBLIC_TEST_KEY)
     encrypted_message = encoder.encrypt(unencrypted_text=message_to_be_encrypted)
