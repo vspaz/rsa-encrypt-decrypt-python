@@ -51,3 +51,7 @@ class Decoder(CryptoBase):
     @staticmethod
     def from_base_85(deserializable: Union[str, bytes]) -> bytes:
         return base64.a85decode(deserializable)
+
+    @staticmethod
+    def from_base_64(deserializable: Union[str, bytes]) -> bytes:
+        return base64.b64decode(deserializable)
