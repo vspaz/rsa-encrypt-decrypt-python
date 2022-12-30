@@ -85,4 +85,6 @@ if __name__ == "__main__":
     main()
 ```
 
-**NOTE**: please refer to [rsa-encrypt-decrypt-golang](https://github.com/vspaz/rsa-encrypt-decrypt-golang) if you need the Golang lib.
+**NOTE**: please refer to:
+* [rsa-encrypt-decrypt-golang](https://github.com/vspaz/rsa-encrypt-decrypt-golang) for the Go lib
+* [rsa-encrypt-decrypt-rust](https://github.com/vspaz/rsa-encrypt-decrypt-rust) for the Rust lib
