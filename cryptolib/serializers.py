@@ -15,11 +15,11 @@ class CryptoBase:
         return PKCS1_OAEP.new(key)
 
     @staticmethod
-    def to_bytes(serializable: str, encoding='UTF-8') -> bytes:
+    def to_bytes(serializable: str, encoding="UTF-8") -> bytes:
         return serializable.encode(encoding=encoding)
 
     @staticmethod
-    def from_bytes(deserializable: bytes, encoding='UTF-8') -> str:
+    def from_bytes(deserializable: bytes, encoding="UTF-8") -> str:
         return deserializable.decode(encoding=encoding)
 
 

@@ -1,7 +1,7 @@
-__title__ = 'cryptolib'
-__description__ = 'cryptolib, a tiny lib to encrypt/decrypt with rsa public/private key pair'
-__url__ = 'https://github.com/vspaz/rsa-encrypt-decrypt-python'
-__email__ = 'wlodzimierz.trzmielinsky@gmail.com'
-__author__ = 'vspaz'
-__maintainer__ = 'vspaz'
-__version__ = '0.1.1'
+__title__ = "cryptolib"
+__description__ = "cryptolib, a tiny lib to encrypt/decrypt with rsa public/private key pair"
+__url__ = "https://github.com/vspaz/rsa-encrypt-decrypt-python"
+__email__ = "wlodzimierz.trzmielinsky@gmail.com"
+__author__ = "vspaz"
+__maintainer__ = "vspaz"
+__version__ = "0.1.1"

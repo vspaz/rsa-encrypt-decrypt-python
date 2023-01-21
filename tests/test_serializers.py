@@ -41,7 +41,7 @@ bQIDAQAB
 
 
 def test_rsa_encrypt_decrypt_ok():
-    message_to_be_encrypted = 'some text goes here'
+    message_to_be_encrypted = "some text goes here"
 
     encoder = serializers.Encoder(public_key=_PUBLIC_TEST_KEY)
     encrypted_message = encoder.encrypt(unencrypted_text=message_to_be_encrypted)
@@ -64,11 +64,11 @@ def test_rsa_decrypt_ok():
     base85_decoded_message = decoder.from_base_85(deserializable=encrypted_message)
     decoded_text = decoder.decrypt(encrypted_text=base85_decoded_message)
 
-    assert decoded_text.decode() == 'some text data'
+    assert decoded_text.decode() == "some text data"
 
 
 def test_encrypt_decrypt_with_base85_ok():
-    message_to_be_encrypted = 'some text goes here'
+    message_to_be_encrypted = "some text goes here"
     encoder = serializers.Encoder(public_key=_PUBLIC_TEST_KEY)
     encrypted_message = encoder.encrypt(unencrypted_text=message_to_be_encrypted)
     base85_encoded_message = encoder.to_base_85(serializable=encrypted_message)
