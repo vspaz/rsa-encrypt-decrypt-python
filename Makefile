@@ -20,7 +20,7 @@ trim:
 	  trim .
 
 unify:
-	  unify -i -r .
+	  unify -r -i --quote '"' .
 
 trail-comma:
 	  find . -name '*.py' -exec add-trailing-comma {} +
