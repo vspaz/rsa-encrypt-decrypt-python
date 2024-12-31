@@ -16,7 +16,7 @@ openssl rsa -in private.pem -out public.pem -pubout -outform PEM
 git clone https://github.com/vspaz/rsa-encrypt-decrypt-python.git
 cd rsa-encrypt-decrypt-python
 
-python3 setup.py install
+pip3 install .
 ```
 
 ```python
