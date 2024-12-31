@@ -32,7 +32,7 @@ setuptools.setup(
     version=_PACKAGE_INFO["__version__"],
     description=_PACKAGE_INFO["__description__"],
     long_description=_get_readme(),
-    packages=setuptools.find_packages(exclude=["tests", "requirements"]),
+    packages=setuptools.find_packages(exclude=["tests", "examples", "requirements"]),
     install_requires=_get_dependencies(),
     url=_PACKAGE_INFO["__url__"],
     license="MIT License",
