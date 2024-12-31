@@ -23,10 +23,6 @@ clean-pyc:
 trim:
 	  trim .
 
-.PHONY: unify
-unify:
-	  unify -r -i --quote '"' .
-
 .PHONY: trail-comma
 trail-comma:
 	  find . -name '*.py' -exec add-trailing-comma {} +
@@ -34,6 +30,5 @@ trail-comma:
 .PHONY: lint
 lint:
 	sh -c "isort . "
-	unify -r -i --quote '"' .
 	trim .
 	find . -name '*.py' -exec add-trailing-comma {} +

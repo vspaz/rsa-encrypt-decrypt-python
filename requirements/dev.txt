@@ -5,4 +5,3 @@ pre-commit==3.8.0
 pytest==8.3.4
 pytest-sugar==1.0.0
 trim==0.3
-unify==0.5.0
